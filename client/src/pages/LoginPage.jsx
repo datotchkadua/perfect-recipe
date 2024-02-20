@@ -1,46 +1,30 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
-import axios from "axios";
 import { login } from "../features/userSlice";
-import { toast } from "react-toastify";
+
 
 import Button from "../components/Button";
+// import useForm from "../hooks/useForm";
+import handleFormSubmit from "../utils/handleFormSubmit";
 
 const LoginPage = () => {
-  const [values, setValues] = useState({
-    email: "",
-    password: "",
-  });
+  // const { values, handleChangeValue, resetForm } = useForm({
+  //   email: "",
+  //   password: "",
+  // });
   const dispatch = useDispatch();
-
-  const handleChangeValue = (event) => {
-    const { name, value } = event.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
-
   const navigate = useNavigate();
+
+  // eslint-disable-next-line no-unused-vars
+const successLogin = (data) => {
+  dispatch(login(data));
+  resetForm();
+  navigate("/");
+};
   function handleSubmit(e) {
     e.preventDefault();
-
-    axios
-      .post("http://localhost:8080/login", values)
-      .then((res) => {
-      
-        if (res?.data?.status === "success") {
-         // console.log(res.data.user);
-          toast.success(res?.data?.message);
-          dispatch(login(res?.data?.user));
-          navigate("/");
-        }
-      })
-      .catch((err) => {
-        const errorMessage = err?.response?.data?.error || err?.message;
-        toast.error(errorMessage);
-      });
+   // handleFormSubmit("http://localhost:8080/login", values, successLogin);
+   
   }
   return (
     <section className="flex flex-col justify-center items-center w-full">
@@ -48,11 +32,15 @@ const LoginPage = () => {
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email">Email:</label>
-          <input type="email" name="email" onChange={handleChangeValue} />
+          <input type="email" name="email" 
+          //onChange={handleChangeValue} 
+          />
         </div>
         <div className="mb-3">
           <label htmlFor="password">Password:</label>
-          <input type="password" name="password" onChange={handleChangeValue} />
+          <input type="password" name="password" 
+         // onChange={handleChangeValue}
+           />
         </div>
         <Button
           type="submit"

@@ -1,80 +1,76 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
-import { toast } from "react-toastify";
+import Input from "../components/Input";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+// import useForm from "../hooks/useForm";
+import * as yup from "yup";
 import Button from "../components/Button";
+import { registrationInputData } from "../utils/inputsData";
+
 
 const SignupPage = () => {
-  const [values, setValues] = useState({
-    name: "",
-    email: "",
-    password: "",
+  const registrationSchema = yup.object().shape({
+    name: yup
+      .string()
+      .matches(/^[A-Za-z]+$/, 'Name must contain only letters')
+      .required('No name provided.'),
+    email: yup
+      .string()
+      .email()
+      .required('No email provided.'),
+    password:yup.string()
+    .required('No password provided.') 
+    .min(6, 'Password is too short - should be 6 chars minimum.')  
   });
 
-  const handleChangeValue = (event) => {
-    const { name, value } = event.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
+  const {
+    handleSubmit,
+    register,
+   // reset,
+   // watch,
+    formState: { errors, isSubmitSuccessful,isSubmitting, isDirty, },
+  } = useForm({
+    resolver: yupResolver(registrationSchema),
+  });
 
-  const navigate = useNavigate();
-  function handleSubmit(e) {
-    e.preventDefault();
-    axios
-      .post("http://localhost:8080/register", values)
-      .then((res) => {
-        if (res?.data?.status === "success") {
-          toast.success(res.data.message);
-          setValues({
-            name: "",
-            email: "",
-            password: "",
-          });
-          navigate("/login");
-        }
-      })
-      .catch((err) => {
-        const errorMessage = err?.response?.data?.error || err?.message;
-        toast.error(errorMessage);
-      });
+
+
+
+
+
+
+// eslint-disable-next-line no-unused-vars
+// const successRegister = (data) => {
+//   resetForm();
+//   navigate("/login");
+// };
+
+  //const navigate = useNavigate();
+  function onSubmit(data) {
+   console.log(data)
+    
+   // handleFormSubmit("http://localhost:8080/register", values-unda iyos,successRegister);
+  
   }
+
 
   return (
     <section className="flex flex-col justify-center items-center w-full">
       <h2 className="text-2xl mb-8">Registration</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={values.name}
-            onChange={handleChangeValue}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={values.email}
-            onChange={handleChangeValue}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={values.password}
-            onChange={handleChangeValue}
-          />
-        </div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        
+     { registrationInputData.map((inputData)=>{
+      return <Input key={inputData.name} 
+      {...inputData}
+      register={register}
+      errors={errors}
+      
+      />
+     }) }
         <Button
           type="submit"
           btnText="Sign up"
+          disabled={!isDirty || isSubmitting}
           // onClick={() => console.log("click")}
         />
       </form>
