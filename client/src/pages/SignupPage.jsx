@@ -45,16 +45,22 @@ const SignupPage = () => {
             />
           );
         })}
-        <Button
-          type="submit"
-          btnText="Sign up"
-          disabled={!isDirty || isSubmitting}
-          // onClick={() => console.log("click")}
-        />
+        <div className="mt-8">
+          <Button
+            type="submit"
+            btnText="Sign up"
+            disabled={!isDirty || isSubmitting}
+            // onClick={() => console.log("click")}
+          />
+
+          <p className="mt-[-10px]">
+            already have an account ?
+            <Link to="/login">
+              <span className="text-[#924d44] "> Log in</span>
+            </Link>
+          </p>
+        </div>
       </form>
-      <Link to="/login">
-        <Button btnText="login" />
-      </Link>
     </section>
   );
 };

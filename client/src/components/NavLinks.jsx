@@ -8,29 +8,7 @@ import {
 import Button from "./Button";
 import logo from "../assets/recipeLogo.png";
 import UserImage from "./UserImage";
-
-const navData = [
-  {
-    text: "Home",
-    to: "/",
-  },
-  {
-    text: "Recipe",
-    to: "/recipe",
-  },
-  {
-    text: "Blog",
-    to: "/blog",
-  },
-  {
-    text: "Add Recipe",
-    to: "/create-recipe",
-  },
-  {
-    text: "About us",
-    to: "/about-us",
-  },
-];
+import { navData } from "../utils/navbarData";
 
 function NavLinks() {
   const isAuthenticated = useSelector(selectIsAuthenticated);
