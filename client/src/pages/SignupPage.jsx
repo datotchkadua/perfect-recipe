@@ -6,17 +6,19 @@ import Button from "../components/Button";
 import Form from "../components/Form";
 import bgImage from "../assets/registration-bg.svg";
 import handleFormSubmit from "../utils/handleFormSubmit";
+import { registrationInputData } from "../utils/inputsData";
+import ImageDiv from "../components/ImageDiv";
 
 const SignupPage = () => {
   const {
     handleSubmit,
     register,
     reset,
-
     formState: { errors, isSubmitting, isDirty },
   } = useForm({
     resolver: yupResolver(registrationSchema),
   });
+
   const navigate = useNavigate();
 
   // eslint-disable-next-line no-unused-vars
@@ -34,13 +36,8 @@ const SignupPage = () => {
       className="flex justify-center items-center w-full mt-20 
        py-8 px-6  bg-[#fef7f6]  border-[0.5px] rounded-md"
     >
-      <div className=" hidden  thousand:flex w-[45%] h-full mr-14">
-        <img
-          src={bgImage}
-          alt="food"
-          className="w-full h-full min-w-[400px] min-h-[400px]"
-        />
-      </div>
+      <ImageDiv imageSrc={bgImage} />
+
       <div
         className="flex flex-col justify-center items-center
        w-full thousand:w-[45%] h-full min-h-[400px]"
@@ -52,6 +49,7 @@ const SignupPage = () => {
           onSubmit={handleSubmit(onSubmit)}
           register={register}
           errors={errors}
+          inputsData={registrationInputData}
         >
           <div className="mt-8">
             <Button

@@ -1,12 +1,10 @@
-import React from "react";
-import { registrationInputData } from "../utils/inputsData";
 import Input from "./Input";
 
-const Form = ({ onSubmit, register, errors, children }) => {
+const Form = ({ onSubmit, register, errors, children, inputsData }) => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        {registrationInputData.map((inputData) => {
+        {inputsData.map((inputData) => {
           return (
             <Input
               key={inputData.name}
