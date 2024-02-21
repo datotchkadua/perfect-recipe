@@ -1,13 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registrationSchema } from "../schemas";
-import Button from "../components/Button";
 import Form from "../components/Form";
 import bgImage from "../assets/registration-bg.svg";
 import handleFormSubmit from "../utils/handleFormSubmit";
 import { registrationInputData } from "../utils/inputsData";
 import ImageDiv from "../components/ImageDiv";
+import ButtonWithLink from "../components/ButtonWithLink";
 
 const SignupPage = () => {
   const {
@@ -51,20 +51,14 @@ const SignupPage = () => {
           errors={errors}
           inputsData={registrationInputData}
         >
-          <div className="mt-8">
-            <Button
-              type="submit"
-              btnText="Sign up"
-              disabled={!isDirty || isSubmitting}
-            />
-
-            <p className="mt-2.5">
-              already have an account ?
-              <Link to="/login">
-                <span className="text-[#924d44] "> Log in</span>
-              </Link>
-            </p>
-          </div>
+          <ButtonWithLink
+            isButtonDisabled={!isDirty || isSubmitting}
+            btnType="submit"
+            paragraphText="Already have an account ?"
+            spanText="Log in"
+            redirectPath="/login"
+            btnText="Sign up"
+          />
         </Form>
       </div>
     </section>

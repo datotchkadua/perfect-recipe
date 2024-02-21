@@ -1,15 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../schemas";
 import { login } from "../features/userSlice";
-import Button from "../components/Button";
 import bgImage from "../assets/donut-login.svg";
 import { loginInputData } from "../utils/inputsData";
 import handleFormSubmit from "../utils/handleFormSubmit";
 import Form from "../components/Form";
 import ImageDiv from "../components/ImageDiv";
+import ButtonWithLink from "../components/ButtonWithLink";
 
 const LoginPage = () => {
   const {
@@ -53,20 +53,14 @@ const LoginPage = () => {
           errors={errors}
           inputsData={loginInputData}
         >
-          <div className="mt-8">
-            <Button
-              type="submit"
-              btnText="Log in"
-              disabled={!isDirty || isSubmitting}
-            />
-
-            <p className="mt-2.5">
-              Don&apos;t Have an Account ?
-              <Link to="/register">
-                <span className="text-[#924d44] ">Register</span>
-              </Link>
-            </p>
-          </div>
+          <ButtonWithLink
+            isButtonDisabled={!isDirty || isSubmitting}
+            btnType="submit"
+            paragraphText="Don't Have an Account ?"
+            spanText="Register"
+            redirectPath="/register"
+            btnText="Login"
+          />
         </Form>
       </div>
     </section>
@@ -74,11 +68,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-{
-  /* <Button
-          type="submit"
-          btnText="Log in"
-          onClick={() => console.log("click login")}
-        /> */
-}
