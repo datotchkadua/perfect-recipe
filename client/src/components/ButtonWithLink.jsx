@@ -6,7 +6,7 @@ const ButtonWithLink = ({
   btnType,
   paragraphText,
   spanText,
-  redirectPath,
+  linkPath,
   btnText,
 }) => {
   return (
@@ -15,7 +15,7 @@ const ButtonWithLink = ({
         <Button type={btnType} btnText={btnText} disabled={isButtonDisabled} />
         <p className="mt-2.5">
           {paragraphText}
-          <Link to={redirectPath}>
+          <Link to={linkPath}>
             <span className="text-[#924d44] ">{spanText}</span>
           </Link>
         </p>
