@@ -5,6 +5,8 @@ export default {
   theme: {
     extend: {
       screens: {
+        mob: "375px",
+        thousand: "1000px",
         lg: "1060px",
       },
     },

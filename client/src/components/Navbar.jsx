@@ -12,7 +12,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="hidden lg:flex w-full mb-32">
+      <nav className="hidden lg:flex w-full mb-20">
         <NavLinks />
       </nav>
 

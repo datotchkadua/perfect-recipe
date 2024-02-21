@@ -1,7 +1,7 @@
 const Input = ({ svg, placeholderText, name, type, register, errors }) => {
   return (
     <>
-      <div className="relative mb-2 w-[250px] sm:w-[400px] ">
+      <div className="relative mb-4 w-200px mob:w-[250px] sm:w-[400px] ">
         <div
           className="absolute inset-y-0 start-0 
     flex items-center ps-3
@@ -20,7 +20,7 @@ const Input = ({ svg, placeholderText, name, type, register, errors }) => {
      outline-none 
   ${
     errors[name]?.message
-      ? "border-red-600 focus:ring-red-600 focus:border-red-600  "
+      ? "border-red-500 focus:ring-red-500 focus:border-red-500  "
       : null
   }
       `}
@@ -28,7 +28,7 @@ const Input = ({ svg, placeholderText, name, type, register, errors }) => {
       </div>
 
       {errors[name] && (
-        <p className="mb-2 text-sm text-red-600 dark:text-red-500">
+        <p className="mb-2 text-sm md:text-base text-red-500 dark:text-red-500">
           <span className="font-medium">{errors[name]?.message} </span>
         </p>
       )}

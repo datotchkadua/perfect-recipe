@@ -60,7 +60,10 @@ function NavLinks() {
       {isAuthenticated ? (
         <UserImage />
       ) : (
-        <div className="flex mt-6 lg:mt-0 flex-col lg:flex-row items-center justify-start lg:justify-center">
+        <div
+          className="flex mt-6 lg:mt-0 flex-col  gap-3
+        lg:flex-row items-center justify-start lg:justify-center mb-4 lg:mb-0"
+        >
           <Button
             btnText="Sign up"
             onClick={() => handleNavigate("/register")}

@@ -1,66 +1,74 @@
 import { Link, useNavigate } from "react-router-dom";
-import Input from "../components/Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-// import useForm from "../hooks/useForm";
 import { registrationSchema } from "../schemas";
 import Button from "../components/Button";
-import { registrationInputData } from "../utils/inputsData";
+import Form from "../components/Form";
+import bgImage from "../assets/registration-bg.svg";
+import handleFormSubmit from "../utils/handleFormSubmit";
 
 const SignupPage = () => {
   const {
     handleSubmit,
     register,
-    // reset,
-    // watch,
-    formState: { errors, isSubmitSuccessful, isSubmitting, isDirty },
+    reset,
+
+    formState: { errors, isSubmitting, isDirty },
   } = useForm({
     resolver: yupResolver(registrationSchema),
   });
+  const navigate = useNavigate();
 
   // eslint-disable-next-line no-unused-vars
-  // const successRegister = (data) => {
-  //   resetForm();
-  //   navigate("/login");
-  // };
+  const successRegister = (data) => {
+    reset();
+    navigate("/login");
+  };
 
-  //const navigate = useNavigate();
   function onSubmit(data) {
-    console.log(data);
-
-    // handleFormSubmit("http://localhost:8080/register", values-unda iyos,successRegister);
+    handleFormSubmit("http://localhost:8080/register", data, successRegister);
   }
 
   return (
-    <section className="flex flex-col justify-center items-center w-full">
-      <h2 className="text-2xl mb-8">Registration</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {registrationInputData.map((inputData) => {
-          return (
-            <Input
-              key={inputData.name}
-              {...inputData}
-              register={register}
-              errors={errors}
+    <section
+      className="flex justify-center items-center w-full mt-20 
+       py-8 px-6  bg-[#fef7f6]  border-[0.5px] rounded-md"
+    >
+      <div className=" hidden  thousand:flex w-[45%] h-full mr-14">
+        <img
+          src={bgImage}
+          alt="food"
+          className="w-full h-full min-w-[400px] min-h-[400px]"
+        />
+      </div>
+      <div
+        className="flex flex-col justify-center items-center
+       w-full thousand:w-[45%] h-full min-h-[400px]"
+      >
+        <h1 className="text-sm mob:text-xl sm:text-2xl mb-4 md:mb-8 font-bold ">
+          Want to join our family
+        </h1>
+        <Form
+          onSubmit={handleSubmit(onSubmit)}
+          register={register}
+          errors={errors}
+        >
+          <div className="mt-8">
+            <Button
+              type="submit"
+              btnText="Sign up"
+              disabled={!isDirty || isSubmitting}
             />
-          );
-        })}
-        <div className="mt-8">
-          <Button
-            type="submit"
-            btnText="Sign up"
-            disabled={!isDirty || isSubmitting}
-            // onClick={() => console.log("click")}
-          />
 
-          <p className="mt-[-10px]">
-            already have an account ?
-            <Link to="/login">
-              <span className="text-[#924d44] "> Log in</span>
-            </Link>
-          </p>
-        </div>
-      </form>
+            <p className="mt-2.5">
+              already have an account ?
+              <Link to="/login">
+                <span className="text-[#924d44] "> Log in</span>
+              </Link>
+            </p>
+          </div>
+        </Form>
+      </div>
     </section>
   );
 };
