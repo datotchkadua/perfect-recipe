@@ -73,3 +73,9 @@ body {
     padding: 30px 40px;
   }
 }
+
+@media (max-width: 640px) {
+  body {
+    padding: 20px 25px;
+  }
+}

@@ -7,7 +7,7 @@ const HomeHeroSection = () => {
   return (
     <section className="flex justify-center items-center w-full my-20">
       <div className="w-full flex  flex-col justify-center thousand:items-start ">
-        <h1 className=" text-5xl sm:text-7xl font-bold ">
+        <h1 className=" text-3xl sm:text-7xl font-bold ">
           Your Daily Dish <br /> A <span className="text-[#924d44]">Food</span>{" "}
           Journey
         </h1>
