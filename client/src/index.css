@@ -13,15 +13,14 @@ body {
   background: #fef2f0;
 }
 
-.disabledButton:disabled{
-    cursor: not-allowed;
-    background-color: #d39e97;
-  }
+.disabledButton:disabled {
+  cursor: not-allowed;
+  background-color: #d39e97;
+}
 
 .disabledButton:disabled:hover {
-    background-color:#cb8e85;
-  }
-
+  background-color: #cb8e85;
+}
 
 /* burger  */
 .hamburger {
@@ -73,5 +72,4 @@ body {
   body {
     padding: 30px 40px;
   }
-
 }

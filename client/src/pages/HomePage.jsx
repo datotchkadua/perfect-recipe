@@ -1,9 +1,9 @@
-
+import HomeHeroSection from "../components/HomeHeroSection";
 
 function HomePage() {
   return (
     <>
-      <div>HomePage</div>
+      <HomeHeroSection />
       <div> other content</div>
     </>
   );
