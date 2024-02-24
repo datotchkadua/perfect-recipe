@@ -3,7 +3,7 @@ const ImageDiv = ({ imageSrc, isHiddenOnSmallScreen = true }) => {
     <div
       className={`${
         isHiddenOnSmallScreen ? "hidden" : ""
-      }  thousand:flex w-full thousand:w-[45%] h-full mr-0 thousand:mr-14`}
+      }  thousand:flex  w-[45%] h-full mr-0 thousand:mr-14`}
     >
       <img
         src={imageSrc}
