@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const fetchRecipes = async (query = "pizza") => {
-  const { REACT_APP_EDAMAM_API_KEY, REACT_APP_EDAMAM_APP_ID } = process.env;
-  const url = `https://api.edamam.com/search?q=${query}&app_id=${REACT_APP_EDAMAM_APP_ID}&app_key=${REACT_APP_EDAMAM_API_KEY}`;
-
+const apiKey = import.meta.env.VITE_EDAMAM_API_KEY;
+const apiId = import.meta.env.VITE_EDAMAM_APP_ID;
+export const fetchRecipes = async ({ query = "pizza" }) => {
+  const url = `https://api.edamam.com/search?q=${query}&app_id=${apiId}&app_key=${apiKey}`;
   try {
     const response = await axios.get(url);
     return response.data.hits;

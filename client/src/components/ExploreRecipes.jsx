@@ -1,14 +1,27 @@
-import React, { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+
 import fakeBgImg from "../assets/salad.jpg";
 import { fetchRecipes } from "../utils/fetchRecipes";
+
 const ExploreRecipes = () => {
-  const searchRecipes = async () => {
-    const data = await fetchRecipes();
-    console.log(data);
-  };
-  useEffect(() => {
-    searchRecipes();
-  }, []);
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["pizzas"],
+    queryFn: fetchRecipes,
+  });
+  console.log(data);
+
+  if (isLoading) {
+    return <h3>Loading!</h3>;
+  }
+
+  if (isError) {
+    return (
+      <>
+        <h3>Error</h3>
+        <p>{error.toString()}</p>
+      </>
+    );
+  }
 
   return (
     <>
