@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-
+import { toast } from "react-toastify";
+import LoadingSpinner from "./LoadingSpinner";
+import { getRecipeId } from "../utils/getRecipeId";
 import { fetchRecipes } from "../utils/fetchRecipes";
 import RecipeCard from "./RecipeCard";
 
@@ -15,24 +17,23 @@ const ExploreRecipes = () => {
   });
 
   if (isLoading) {
-    return <h3>Loading!</h3>;
+    return <LoadingSpinner />;
   }
 
   if (isError) {
-    return (
-      <>
-        <h3>Error</h3>
-        <p>{error.toString()}</p>
-      </>
-    );
+    toast.error(error.toString());
   }
+  console.log(recipesData);
 
   return (
-    <>
-      <section>
+    <div>
+      <div className="flex  mb-20">
+        <h2 className="text-4xl font-bold">Explore Recipes</h2>
+        <h2 className="">view more</h2>
+      </div>
+      <section className=" flex justify-center items-center flex-wrap">
         {recipesData?.map((recipe) => {
-          const urIParts = recipe.recipe.uri.split("_");
-          const recipeId = urIParts[urIParts.length - 1];
+          const recipeId = getRecipeId(recipe.recipe.uri);
 
           return (
             <RecipeCard
@@ -42,7 +43,7 @@ const ExploreRecipes = () => {
           );
         })}
       </section>
-    </>
+    </div>
   );
 };
 

@@ -26,7 +26,7 @@ const AddRecipeSection = () => {
         </p>
         <Button
           btnText="Create New Recipe"
-          onClick={() => navigate("/recipe")}
+          onClick={() => navigate("/create-recipe")}
         />
       </div>
     </section>

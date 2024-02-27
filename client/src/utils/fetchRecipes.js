@@ -9,7 +9,6 @@ export const fetchRecipes = async ({ query = "pizza" }) => {
     return response.data.hits;
   } catch (error) {
     console.error("Error fetching recipes:", error);
-    return [];
   }
 };
 
@@ -22,7 +21,6 @@ export const fetchRecipesById = async ({
     return response.data;
   } catch (error) {
     console.error("Error fetching recipes:", error);
-    return [];
   }
 };
 

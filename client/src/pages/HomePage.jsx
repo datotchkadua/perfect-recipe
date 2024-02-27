@@ -7,6 +7,7 @@ function HomePage() {
     <>
       {/* <HomeHeroSection />
       <AddRecipeSection /> */}
+
       <ExploreRecipes />
       <div> other content</div>
     </>

@@ -17,7 +17,7 @@ const StarsRating = ({ iseReviews = false, reviews = 0 }) => {
     );
   });
   return (
-    <div className="flex flex-row items-center w-full">
+    <div className="flex flex-row items-center w-full my-1">
       <div className=" flex ml-1">{tempStars}</div>
       {iseReviews && (
         <p className="ml-1 mb-0 ">
