@@ -14,7 +14,8 @@ const RecipeCard = ({ recipeData }) => {
   console.log(recipeData);
   return (
     <section
-      className="w-[300px] sm:w-[440px] md:w-[340px] h-[370px] m-4
+      className="w-[300px] sm:w-[440px] md:w-[340px] 
+      max-h-[450px] mob:h-[370px] mx-6 my-8 
        bg-white border border-gray-200 
 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 "
     >
@@ -29,7 +30,7 @@ rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 "
 
         <div className="flex flex-col justify-start items-start mob:flex-row text-sm  mob:justify-between mob:items-center w-full">
           <p className="flex  justify-center items-center mb-2 font-normal text-gray-700 dark:text-gray-400">
-            Recipe by :{" "}
+            Recipe by :
             <a
               href={authorLink}
               target="_blank"
