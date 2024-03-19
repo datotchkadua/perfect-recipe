@@ -23,7 +23,6 @@ const ExploreRecipes = () => {
   if (isError) {
     toast.error(error.toString());
   }
-  console.log(recipesData);
 
   return (
     <div>
@@ -31,7 +30,6 @@ const ExploreRecipes = () => {
 
       <section className="flex justify-center items-center flex-wrap">
         {recipesData?.slice(0, 8).map((recipe) => {
-          // Change 5 to the number of recipes you want to display
           const recipeId = getRecipeId(recipe.recipe.uri);
           return (
             <RecipeCard

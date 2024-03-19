@@ -37,3 +37,11 @@ export const loginInputData = [
     type: "password",
   },
 ];
+export const subscriptionInputData = [
+  {
+    name: "email",
+    svg: emailSvg,
+    placeholderText: "Enter Your Email ",
+    type: "email",
+  },
+];

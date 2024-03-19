@@ -6,7 +6,7 @@ import Form from "../components/Form";
 import ImageDiv from "../components/ImageDiv";
 import ButtonWithLink from "../components/ButtonWithLink";
 
-const AuthForm = ({
+const AuthWrapper = ({
   redirectPath,
   schema,
   formInputsData,
@@ -72,4 +72,4 @@ const AuthForm = ({
   );
 };
 
-export default AuthForm;
+export default AuthWrapper;
